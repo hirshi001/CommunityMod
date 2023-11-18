@@ -1,5 +1,6 @@
 package io.github.communitymod.common.items;
 
+import java.security.SecureRandom;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemCooldowns;
@@ -24,7 +25,7 @@ public class MiguelItem extends Item {
 		{
 			if(!itemCoolDowns.isOnCooldown(stack.getItem()))
 			{
-				Random rn = new Random();
+				Random rn = new SecureRandom();
 				int i = rn.nextInt(100);
 				if(i == 1)
 				{
