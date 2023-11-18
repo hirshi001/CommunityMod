@@ -2,6 +2,7 @@ package io.github.communitymod.core.world.dim.gen;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.SecureRandom;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.WorldGenRegion;
@@ -44,7 +45,7 @@ public class DarkTowersChunkGenerator extends ChunkGenerator {
     protected final long seed;
 
     public DarkTowersChunkGenerator(BiomeSource biomeSource, DimensionSettings settings) {
-        this(biomeSource, settings, new Random().nextLong());
+        this(biomeSource, settings, new SecureRandom().nextLong());
     }
 
     public DarkTowersChunkGenerator(BiomeSource biomeSource, DimensionSettings settings, long seed) {
@@ -84,7 +85,7 @@ public class DarkTowersChunkGenerator extends ChunkGenerator {
                 int baseHeight = 32;
                 int maxHeightDifference = 16;
                 int defaultGapWidth = 4;
-                int gap = (new Random().nextInt(defaultGapWidth)) + 1 / 2;
+                int gap = (new SecureRandom().nextInt(defaultGapWidth)) + 1 / 2;
                 int height = new Random(System.currentTimeMillis()).nextInt(maxHeightDifference) + baseHeight;
                 Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(settings.towerBlock));
                 BlockState towerBlockState = (block != null ? block : Blocks.STONE).defaultBlockState();
